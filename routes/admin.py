@@ -7,7 +7,7 @@ from database.admin import (
     delete_single_admin_email,
     update_single_admin
 )
-from models import Admins, UpdateAdmins
+from models.admin import Admins, UpdateAdmins
 
 admin = APIRouter()
 

@@ -1,5 +1,6 @@
 from motor.motor_asyncio import AsyncIOMotorClient as AsyncIOMotorClient
-from models import Employee
+from models.employee import Employee
+from bson import ObjectId
 
 app = AsyncIOMotorClient("mongodb://localhost:27017")
 

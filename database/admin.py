@@ -1,5 +1,5 @@
 from motor.motor_asyncio import AsyncIOMotorClient as AsyncIOMotorClient
-from models import Admins
+from models.admin import Admins
 from bson import ObjectId
 
 app = AsyncIOMotorClient("mongodb://localhost:27017")
@@ -84,10 +84,7 @@ async def update_single_admin(id: str, data):
         {'_id': '1234567890', 'name': 'John Doe', 'email': 'johndoe@example.com', 'role': 'admin'}
     """
     admin = { key:value for key, value in data.dict().items() if value is not None }
-    print(admin)
-    print("before")
     await collection.update_one({"_id": ObjectId(id)}, {"$set": admin})
-    print("after")
     document = await collection.find_one({"_id": ObjectId(id)})
     response = Admins(**document)
     return response
